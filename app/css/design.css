@@ -1,0 +1,160 @@
+/* デザイン用CSS */
+
+body {
+  background-color: #AFEEEE;
+  margin: 0;
+  padding: 180px 0;
+}
+
+/* ヘッダ領域 */
+header {
+    background-color: #AFEEEE;
+    position: fixed;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    height: 180px;
+    z-index: 200;
+}
+
+/* メインカラム */
+#main {
+    padding-top: 180px; 
+/*    position: fixed; */
+    z-index: 150; 
+}
+
+/*ナビメニュー*/
+#fixed-navi{
+  background-color: #AFEEEE;
+}
+
+/*テーブルスクロール用*/
+thead.scrollHead{
+/*  position: relative; */
+  display:table;
+  position: fixed;
+  padding-top: 0px;
+  z-index: 100; 
+}
+
+tbody.scrollBody{
+  padding-top: 25px; 
+  overflow-y:scroll;
+  display:block;
+  height:500px;
+}
+
+thead{
+  background-color: white;
+}
+
+/*幅調整*/
+td,th{
+  border: 1px black solid;
+/*  table-layout:fixed; */
+}
+/* 登録日報幅 */
+.excludeFlg{
+  width:80px;
+}
+.ReportNo{
+  width:30px;
+}
+.ActionPlan{
+  width:280px;
+}
+.workPlan{
+  width:280px;
+}
+.DailyReport{
+  width:260px;
+}
+.Nextwork{
+  width:200px;
+}
+
+/* 日報明細幅 */
+.D1{
+  width:60px;
+}
+.D2{
+  width:60px;
+}
+.D3{
+  width:100px;
+}
+.D4{
+  width:60px;
+}
+.D5{
+  width:100px;
+}
+.D6{
+  width:60px;
+}
+.D7{
+  width:100px;
+}
+.D8{
+  width:60px;
+}
+.D9{
+  width:100px;
+}
+.D10{
+  width:60px;
+}
+.D11{
+  width:100px;
+}
+.D12{
+  width:150px;
+}
+.D13{
+  width:120px;
+}
+.D14{
+  width:180px;
+}
+.D15{
+  width:120px;
+}
+.D16{
+  width:180px;
+}
+.D17{
+  width:130px;
+}
+.D18{
+  width:180px;
+}
+.D19{
+  width:130px;
+}
+
+/* 残業明細幅 */
+.O1{
+  width:70px;
+}
+.O2{
+  width:80px;
+}
+.O3{
+  width:100px;
+}
+.O4{
+  width:100px;
+}
+.O5{
+  width:100px;
+}
+.O6{
+  width:100px;
+}
+.O7{
+  width:100px;
+}
+.O8{
+  width:100px;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/Matter.js"></script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <!--- ItemField.currentNumber = document.getElementsByTagName("div").length-1 ; --->
+    <title>案件マスター登録</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h1>案件マスター</h1>
+        <input type="button" name="MakeFolder" id="MakeFolder" value="案件フォルダ作成" />
+        </br>
+        <form name="Administration">
+          <span id="AdministrationCdDisplay"></span>
+        </form>
+        <form name="ActionPlan">
+          <span id="ActionPlanCdDisplay"></span>
+          <a href="ActionPlanMasterMainte.html" target="_blank">行動計画編集</a>
+          <input type="button" name="ActionPlanReload" id="ActionPlanReload" value="行動計画更新" />
+          </br>
+        </form>
+        <input type="button" name="ViewInsert" id="btnViewInsert" value="項目追加" onClick="ItemField.add();" />
+        <input type="button" name="ViewDelete" id="btnViewDelete" value="項目削除" onClick="ItemField.remove();" />
+        <a href="" name="linkLogOut" id="linkLogOut">データベース切断</a>
+        </br>
+      </nav>
+    </header>
+    <main id = "content">
+      <form name="MatterRow">
+        <div id="item1"></div>
+      </form>
+    </main>
+  </body>
+</html>

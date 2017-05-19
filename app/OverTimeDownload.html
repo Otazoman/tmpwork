@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/jkl-calendar.js"></script>
+    <script type="text/javascript" src="src/js/ReportdayControl.js"></script>
+    <script type="text/javascript" src="src/js/EmpControl.js"></script>
+    <script type="text/javascript" src="src/js/TableControl.js"></script>
+    <script type="text/javascript" src="src/js/OverTimeDownload.js"></script>
+    <script>        var cal1 = new JKL.Calendar("calenderFrom", "DateHeader", "colnameF");</script>
+    <script>        var cal2 = new JKL.Calendar("calenderTo", "DateHeader", "colnameT");</script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <title>残業時間表示</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h2>残業実績データ表示</h2>
+        <form id ="DateHeader">検索日(自):
+          <input name="colnameF" id="txtReportdayF" style="width:90px" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <span id="calenderFrom"></span>検索日(至):
+          <input name="colnameT" id="txtReportdayT" style="width:90px" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <input type="button" name="btnDaySearch" id="btnDaySearch" value="残業実績検索" />
+          <span id="calenderTo"></span>
+          <span id ="EmpID"></span>
+          <input type="button" name="btnViewDownload" id="btnViewDownload" value="画面表示分ダウンロード" />
+          <input type="button" name="btnAllDownload" id="btnAllDownload" value="全担当者明細ダウンロード" />
+        </form>
+        <form name="DailyReport">
+          <table border="1" cellspacing="0" cellpadding="4" id="contenttable" >
+            <thead class="scrollHead" id="headder1" >
+              <tr>
+                <th class = "O1">担当者CD</th>
+                <th class = "O2">担当者名</th>
+                <th class = "O3">作業日</th>
+                <th class = "O4">残業理由コード</th>
+                <th class = "O5">残業理由</th>
+                <th class = "O6">残業理由補足</th>
+                <th class = "O7">残業申請時間</th>
+                <th class = "O8">残業実績時間</th>
+              </tr>
+            </thead>
+          </nav>
+        </header>
+        <tbody class="scrollBody" id="table1">
+          <tr>
+            <td class = "O1"></td>
+            <td class = "O2"></td>
+            <td class = "O3"></td>
+            <td class = "O4"></td>
+            <td class = "O5"></td>
+            <td class = "O6"></td>
+            <td class = "O7"></td>
+            <td class = "O8"></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

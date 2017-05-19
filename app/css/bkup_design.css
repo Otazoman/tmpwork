@@ -1,0 +1,28 @@
+/* デザイン用CSS */
+
+body {
+  background-color: #AFEEEE;
+  margin: 0;
+  padding: 180px 0;
+
+}
+
+/* ヘッダ領域 */
+header {
+    width: 100%;
+    height: 180px;
+    overflow: auto;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    z-index: 200;
+}
+
+/* メインカラム */
+#main {
+  padding: 180px 0;
+}
+
+/*ナビメニュー*/
+#fixed-navi{
+}

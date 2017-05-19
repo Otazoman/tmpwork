@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/jkl-calendar.js"></script>
+    <script type="text/javascript" src="src/js/EmpControl.js"></script>
+    <script type="text/javascript" src="src/js/DailyReportView.js"></script>
+    <script>        var cal1 = new JKL.Calendar("calenderFrom", "DateHeader", "colnameF");</script>
+    <script>        var cal2 = new JKL.Calendar("calenderTo", "DateHeader", "colnameT");</script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <title>日報表示</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h2>日報表示</h2>
+        <form id ="DateHeader">報告日(自):
+          <input name="colnameF" id="txtReportdayF" style="width:90px" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <span id="calenderFrom"></span>報告日(至):
+          <input name="colnameT" id="txtReportdayT" style="width:90px" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <span id="calenderTo"></span>
+          <input type="button" name="btnDaySearch" id="btnDaySearch" value="日報検索" />
+          <span id="calender"></span>
+          <span id ="EmpID"></span>
+          <form method="post" enctype="multipart/form-data">
+            <input type="file" name="selectFile" id="selectFile" style ="width:100px" />
+            <input type="button" name="btnToExcel" id="btnToExcel" value="EXCEL保存" />
+          </form>
+        </form>
+        <form name="DailyReport">
+          <table border="1" cellspacing="0" cellpadding="4">
+            <thead class="scrollHead">
+              <tr>
+                <th class = "excludeFlg">出力除外
+                </th>
+                <th class = "ReportNo">ＮＯ
+                </th>
+                <th class = "ActionPlan">行動計画/業務課題
+                </th>
+                <th class = "workPlan">短期目標
+                </th>
+                <th class = "DailyReport">今日実施した作業内容
+                </th>
+                <th class = "Nextwork">次作業/問題点
+                </th>
+              </tr>
+            </thead>
+          </nav>
+        </header>
+        <tbody class="scrollBody" id="table1">
+          <tr>
+            <td class = "excludeFlg">
+            </th>
+            <td class = "ReportNo">
+            </th>
+            <td class = "ActionPlan">
+            </th>
+            <td class = "workPlan">
+            </th>
+            <td class = "DailyReport">
+            </th>
+            <td class = "Nextwork">
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/jkl-calendar.js"></script>
+    <script type="text/javascript" src="src/js/ReportdayControl.js"></script>
+    <script type="text/javascript" src="src/js/EmpControl.js"></script>
+    <script type="text/javascript" src="src/js/TableControl.js"></script>
+    <script type="text/javascript" src="src/js/DailyReportDownload.js"></script>
+    <script>        var cal1 = new JKL.Calendar("calenderFrom", "DateHeader", "colnameF");</script>
+    <script>        var cal2 = new JKL.Calendar("calenderTo", "DateHeader", "colnameT");</script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <title>日報表示</title>
+</head>
+<body>
+<header>
+    <nav id = "fixed-navi">
+    <h2>日報明細データ表示</h2>
+    <form id ="DateHeader">
+     検索日(自):<input name="colnameF" id="txtReportdayF" style="width:90px" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+    <span id="calenderFrom"></span>
+     検索日(至):<input name="colnameT" id="txtReportdayT" style="width:90px" onClick="cal2.write();" onChange="cal2.getFormValue(); cal2.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+    <input type="button" name="btnDaySearch" id="btnDaySearch" value="日報検索" />
+    <span id="calenderTo"></span>
+    <span id ="EmpID"></span>
+    <input type="button" name="btnViewDownload" id="btnViewDownload" value="画面表示分ダウンロード" />
+    <input type="button" name="btnAllDownload" id="btnAllDownload" value="全担当者明細ダウンロード" />
+    </form>
+    <form name="DailyReport">
+    <table border="1" cellspacing="0" cellpadding="4" id ="contenttable">
+      <thead class="scrollHead" id="headder1" >
+        <tr>
+            <th class = "D1">日報ID</th>
+            <th class = "D2">作業計画ID</th>
+            <th class = "D3">作業計画</th>
+            <th class = "D4">基本方針ID</th>
+            <th class = "D5">基本方針</th>
+            <th class = "D6">行動計画ID</th>
+            <th class = "D7">行動計画</th>
+            <th class = "D8">案件ID</th>
+            <th class = "D9">案件名</th>
+            <th class = "D10">作業ID</th>
+            <th class = "D11">作業名</th>
+            <th class = "D12">実績・補足</th>
+            <th class = "D13">関連資料</th>
+            <th class = "D14">作業日</th>
+            <th class = "D15">作業開始</th>
+            <th class = "D16">作業終了</th>
+            <th class = "D17">作業時間</th>
+            <th class = "D18">担当者CD</th>
+            <th class = "D19">担当者名</th>
+        </tr>
+     </thead>
+    </nav>
+</header>
+     <tbody class="scrollBody" id="table1">
+        <tr>
+            <td class = "D1"></td>
+            <td class = "D2"></td>
+            <td class = "D3"></td>
+            <td class = "D4"></td>
+            <td class = "D5"></td>
+            <td class = "D6"></td>
+            <td class = "D7"></td>
+            <td class = "D8"></td>
+            <td class = "D9"></td>
+            <td class = "D10"></td>
+            <td class = "D11"></td>
+            <td class = "D12"></td>
+            <td class = "D13"></td>
+            <td class = "D14"></td>
+            <td class = "D15"></td>
+            <td class = "D16"></td>
+            <td class = "D17"></td>
+            <td class = "D18"></td>
+            <td class = "D19"></td>
+        </tr>
+     </tbody>
+    </table>
+    </form>
+</body>
+</html>

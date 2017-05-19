@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/Task.js"></script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <title>作業マスター登録</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h1>作業マスター</h1>
+        <form name="form1">作業CD:
+          <input type="text" name="txtTaskCd" id="txtTaskCd">
+          <a href="" name="linkMaxCd" id="linkMaxCd">最大値</a>
+          </br>作業内容:
+          <input type="text" name="txtTaskName" id="txtTaskName">
+          </br>
+          <input type="button" name="btnInsert" id="btnInsert" value="追加">
+          <input type="button" name="btnUpdate" id="btnUpdate" value="更新">
+          <input type="button" name="btnDelete" id="btnDelete" value="削除">
+          <a href="" name="linkLogOut" id="linkLogOut">データベース切断</a>
+          </br>
+        </form>
+      </nav>
+    </header>
+    </br>
+    <div id="dataDisplay"></div>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/jkl-calendar.js"></script>
+    <script type="text/javascript" src="src/js/EmpControl.js"></script>
+    <script type="text/javascript" src="src/js/DailyPlan.js"></script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <script>        var cal1 = new JKL.Calendar("calender", "DateHeader", "colname");</script>
+    <title>作業計画入力</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h2>作業計画入力</h2>
+        <form id ="DateHeader">予定日:
+          <input name="colname" id="txtPlanDate" style="width:90px" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <input type="button" name="btnDaySearch" id="btnDaySearch" value="検索" />
+          <span id="calender"></span>
+          <span id ="EmpID"></span>
+          <input type="button" name="btnBeforeDataCopy" id="btnBeforeDataCopy" value="前日分作業計画コピー" />
+        </form>
+        <input type="button" name="ViewInsert" id="btnViewInsert" value="項目追加" onClick="ItemField.add();" />
+        <input type="button" name="ViewDelete" id="btnViewDelete" value="項目削除" onClick="ItemField.remove();" />
+      </nav>
+    </header>
+    <main id = "content">
+      <form name="DailyPlan">
+        <div id="item1" class="table"></div>
+      </form>
+    </main>
+  </body>
+</html>

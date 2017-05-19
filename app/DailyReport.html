@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/jkl-calendar.js"></script>
+    <script type="text/javascript" src="src/js/EmpControl.js"></script>
+    <script type="text/javascript" src="src/js/DailyReport.js"></script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <script>        var cal1 = new JKL.Calendar("calender", "DateHeader", "colname");</script>
+    <title>日報入力</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h2>日報入力</h2>
+        <b>※時間欄は時間単位で入力してください。(15分=0.25,30分=0.5,45分=0.75)</b>
+        <form id ="DateHeader">報告日:
+          <input name="colname" id="txtReportday" style="width:90px" onClick="cal1.write();" onChange="cal1.getFormValue(); cal1.hide();" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <input type="button" name="btnDaySearch" id="btnDaySearch" value="日報検索" />
+          <span id="calender"></span>
+          <span id ="EmpID"></span>
+          <input type="button" name="btnDailyPlan" id="btnDailyPlan" value="翌日分作業計画" />のべ作業時間合計:
+          <input id="txtSumWorkTime" style="width:50px" type="text" />
+          <input type="button" name="btnSumWorkTime" id="btnSumWorkTime" value="時間再計算" />
+          <input type="button" name="btnBeforeDataCopy" id="btnBeforeDataCopy" value="前日分日報コピー" />
+          <br/>残業申請時間：
+          <input name="txtovplan" id="txtovplan" style="width:50px" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />残業実績時間：
+          <input name="txtovertime" id="txtovertime" style="width:50px" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <span id ="overtimecause"></span>残業理由補足：
+          <input name="txtovertimememo" id="txtovertimememo" style="width:255px" onfocus="this.style.backgroundColor='#ffff00'" onblur="this.style.backgroundColor='#ffffff'" type="text" />
+          <input type="button" name="btnovertime" id="btnovertime" value="残業時間登録" />
+          <br/>申請時間合計:
+          <input id="txtovpSum" style="width:50px" type="text" />実績時間合計:
+          <input id="txtovtSum" style="width:50px" type="text" />
+        </form>
+        <input type="button" name="ViewInsert" id="btnViewInsert" value="項目追加" onClick="ItemField.add();" />
+        <input type="button" name="ViewDelete" id="btnViewDelete" value="項目削除" onClick="ItemField.remove();" />
+      </nav>
+    </header>
+    <main id = "content">
+      <form name="DailyReport">
+        <div id="item1" class="table"></div>
+      </form>
+    </main>
+  </body>
+</html>

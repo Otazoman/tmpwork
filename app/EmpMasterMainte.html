@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <script type="text/javascript" src="src/js/DataBaseOperate.js"></script>
+    <script type="text/javascript" src="src/js/dateformat.js"></script>
+    <script type="text/javascript" src="src/js/Emp.js"></script>
+    <link href="css/design.css" rel="stylesheet" type="text/css">
+    <title>担当者マスター登録</title>
+  </head>
+  <body>
+    <header>
+      <nav id = "fixed-navi">
+        <h1>担当者マスター</h1>
+        <form name="form1">担当者CD:
+          <input type="text" name="txtEmpCd" id="txtEmpCd">担当者名:
+          <input type="text" name="txtEmpName" id="txtEmpName">
+          </br>
+          <input type="button" name="btnInsert" id="btnInsert" value="追加">
+          <input type="button" name="btnUpdate" id="btnUpdate" value="更新">
+          <input type="button" name="btnDelete" id="btnDelete" value="削除">
+          <a href="" name="linkLogOut" id="linkLogOut">データベース切断</a>
+          </br>
+        </form>
+        </br>
+      </nav>
+    </header>
+    <div id="dataDisplay"></div>
+  </body>
+</html>
