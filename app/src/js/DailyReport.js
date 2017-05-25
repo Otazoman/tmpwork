@@ -5,7 +5,7 @@
 //　2013/12/2           Ver1.2  定型作業登録、呼出機能追加
 //　2013/12/18          Ver1.3  残業時間管理機能追加 
 //  2017/2/27           Ver1.4  上部メニュー固定化に伴う要素数取得の不具合修正
-//  2017/5/19           Ver1.5  リファクタリング(社員コード部分の外部化)
+//  2017/5/25           Ver1.5  別日付登録ロジック不具合修正
 //
 //  機能：日報登録画面の制御等を行う
 //-------------------------------------------------------------------
@@ -468,6 +468,15 @@ function dataInsert(ReportID, WorkplanID, AdminID, ActionID, MatterID, TaskID, R
         var btnCnt = Chkcount;
         var dateFormat = new DateFormat("yyyy/MM/dd HH:mm:ss");
         OperateDate = dateFormat.format(new Date());
+
+        //作業計画が設定されているかの確認
+        var cWork = "－";
+        var checker = wPlanChecker(WorkplanID,Reportday);
+        if (checker==false){
+            WorkplanID = cWork;
+        }
+
+        //データ追加
         if (dataCheck(ReportID, 0, Chkcount) && dataCheck(ReportMemo, 1, Chkcount)) {
             var mySql = " INSERT INTO t_dailyreport (ReportID,WorkplanID,AdministrationID,ActionplanID,MatterID,TaskID,Reportday,Dailymemo,Reference,Empid,Workinghours,Creationdate,DeleteFlg ) "
                          + " VALUES (" + Number(ReportID) + ",'" + WorkplanID + "','" + AdminID + "','" + ActionID + "','" + MatterID + "','" + TaskID + "','" + Reportday + "','" + ReportMemo + "','" + Reference + "','" + EmpID + "','" + Workinghours + "','" + OperateDate + "','0');";
@@ -680,7 +689,7 @@ function TaskCdchange(obj, Mcounter) {
 
 
 //*
-//*　開始時間をデータベースに登録する。
+//*　開始時間をデータベースに登録する。　　　#修正対象(作業計画のチェック)
 //*
 function startTimeUpdate(ReportID, WorkplanID, Memo, whour, Refar, txtCount) {
     //登録用日時取得
@@ -702,13 +711,13 @@ function startTimeUpdate(ReportID, WorkplanID, Memo, whour, Refar, txtCount) {
         return;
     }
     //必要項目類セット
-    var rId = Number(ReportID);                                                                     //日報ID
+    var rId = Number(ReportID);                                                             　 //日報ID
     var wId = WorkplanID;
-    var ReportMemo = Memo;                                                                  //実績・補足
-    var Reportday = document.getElementById('txtReportday').value;                          //報告日
-    var EmpID = EmpCd;                                                                      //担当者
-    var AdminID = document.getElementById('AdministrationCd' + Chkcount).innerText;         //基本方針
-    var ActionID = document.getElementById('ActionPlanCd' + Chkcount).innerText;            //行動計画
+    var ReportMemo = Memo;                                                                    //実績・補足
+    var Reportday = document.getElementById('txtReportday').value;                            //報告日
+    var EmpID = EmpCd;                                                                        //担当者
+    var AdminID = document.getElementById('AdministrationCd' + Chkcount).innerText;           //基本方針
+    var ActionID = document.getElementById('ActionPlanCd' + Chkcount).innerText;              //行動計画
     var MatterID = document.getElementById('MatterCd' + Chkcount).innerText;                  //案件ID
     var TaskID = document.getElementById('TaskCd' + Chkcount).innerText;                      //作業ID
     var Workinghours = whour;                                                                 //作業時間
@@ -721,6 +730,14 @@ function startTimeUpdate(ReportID, WorkplanID, Memo, whour, Refar, txtCount) {
         var idcount = recordSet(0);
         //alert(mySql);
         //console.log(mySql);
+
+        //作業計画が設定されているかの確認
+        var cWork = "－";
+        var checker = wPlanChecker(WorkplanID,Reportday);
+        if (checker==false){
+            WorkplanID = cWork;
+        }
+
         if (idcount == 0) {
             if (dataCheck(ReportID, 0, Chkcount) && dataCheck(ReportMemo, 1, Chkcount)) {
                 var mySql = " INSERT INTO t_dailyreport (ReportID,WorkplanID,AdministrationID,ActionplanID,MatterID,TaskID,Reportday,Dailymemo,Reference,Empid,Workinghours,Taskstart,Creationdate,DeleteFlg ) "
@@ -966,6 +983,26 @@ function ChckTask(Task, Chkcount) {
     }
     return true;
 }
+
+//*
+//* 作業計画チェック
+//作業計画IDが「-」でない場合は作業計画IDに「-」をセットして登録する。(作業計画登録有分を別日付で保存する場合の対策)
+function wPlanChecker(WorkplanID,Reportday){
+    var cWork = "－";
+    if (WorkplanID!==cWork){
+        var mySql = " SELECT COUNT(WorkplanID) AS WIDCount"
+                    + " FROM t_workplan"
+                    + " WHERE (PlanDate='" + Reportday + "') AND (Empid='" + EmpID + "') AND (DeleteFlg = '0' );";
+        //alert(mySql);
+        //console.log(mySql);
+        var recordSet = database.Execute(mySql);
+        var wplanCount = recordSet(0);
+        if(wplanCount==0){
+            return false;
+        }
+    }
+}
+
 
 //*
 //* 基本方針、行動計画、案件の文字列分割用
