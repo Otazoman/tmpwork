@@ -1,24 +1,24 @@
 //-------------------------------------------------------------------
-// æ—¥å ±ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ç”¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
+// “ú•ñƒ_ƒEƒ“ƒ[ƒh—pƒ‚ƒWƒ…[ƒ‹
 //  2013/6/27  Ver1.0    Created By M.Nishimura
-//  2013/11/25 å…¨ä»¶ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰æ™‚ä¸å…·åˆä¿®æ­£  Modified By M.Nishimura
-//  2017/3/2   Ver1.4    ãƒ˜ãƒƒãƒ€å›ºå®šå¯¾å¿œ(æ—¢å­˜ã‚³ãƒ¼ãƒ‰ã§ã¯ãƒ˜ãƒƒãƒ€éƒ¨ãŒå‡ºåŠ›ã•ã‚Œãªããªã£ãŸãŸã‚)
-//  2017/3/9   Ver1.5    ãƒªãƒ•ã‚¡ã‚¯ã‚¿ãƒªãƒ³ã‚°(æ—¥ä»˜é–¢é€£ã€å¾“æ¥­å“¡ã‚³ãƒ¼ãƒ‰é–¢é€£é–¢æ•°ã‚’åˆ†é›¢)
+//  2013/11/25 ‘SŒƒ_ƒEƒ“ƒ[ƒh•s‹ï‡C³  Modified By M.Nishimura
+//  2017/3/2   Ver1.4    ƒwƒbƒ_ŒÅ’è‘Î‰(Šù‘¶ƒR[ƒh‚Å‚Íƒwƒbƒ_•”‚ªo—Í‚³‚ê‚È‚­‚È‚Á‚½‚½‚ß)
+//  2017/3/9   Ver1.5    ƒŠƒtƒ@ƒNƒ^ƒŠƒ“ƒO(“ú•tŠÖ˜AA]‹ÆˆõƒR[ƒhŠÖ˜AŠÖ”‚ğ•ª—£)
 //
-//  æ©Ÿèƒ½ï¼šä¿å­˜ã•ã‚Œã¦ã„ã‚‹æ—¥å ±æ˜ç´°ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã€‚
+//  ‹@”\F•Û‘¶‚³‚ê‚Ä‚¢‚é“ú•ñ–¾×ƒf[ƒ^‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚éB
 //-------------------------------------------------------------------
 
-var EmpCd=location.search.substring(1);     //ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ã‹ã‚‰æ‹…å½“è€…CDå–å¾—
+var EmpCd=location.search.substring(1);     //ƒƒOƒCƒ“‰æ–Ê‚©‚ç’S“–ÒCDæ“¾
 
 onload = init;
 onunload = dbClose;
 
 //*
-//*ã€€åˆæœŸè¨­å®šã‚’ã™ã‚‹é–¢æ•°
+//*@‰Šúİ’è‚ğ‚·‚éŠÖ”
 //*
 function init() {
 
-    //æ¤œç´¢æ—¥(è‡ª)ã€æ¤œç´¢æ—¥(è‡³)è¡¨ç¤º
+    //ŒŸõ“ú(©)AŒŸõ“ú(Š)•\¦
     var txtdate = new DateFormat("yyyy/MM/dd");
     txtdate = txtdate.format(new Date());
     txtReportdayF = document.getElementById("txtReportdayF");
@@ -27,33 +27,33 @@ function init() {
     txtReportdayT = document.getElementById("txtReportdayT");
     var NextDay = DayCalculate(txtdate);
     txtReportdayT.value = NextDay;
-    //æ¤œç´¢æ—¥ã®ãƒ†ã‚­ã‚¹ãƒˆãƒœãƒƒã‚¯ã‚¹åˆ¶å¾¡
+    //ŒŸõ“ú‚ÌƒeƒLƒXƒgƒ{ƒbƒNƒX§Œä
     txtReportdayF.onblur = function () {
         this.style.backgroundColor = "#ffffff";
     }
     txtReportdayT.onblur = function () {
         this.style.backgroundColor = "#ffffff";
     }
-    //æ—¥å ±æ¤œç´¢ãƒœã‚¿ãƒ³åˆ¶å¾¡
+    //“ú•ñŒŸõƒ{ƒ^ƒ“§Œä
     document.getElementById("btnDaySearch").onclick = function () {
         txtDateUpdate(txtReportdayF);
     }
-    //ç”»é¢ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³åˆ¶å¾¡
+    //‰æ–Êƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“§Œä
     document.getElementById("btnViewDownload").onclick = function () {
         ViewDownload("download_Dailyview.csv");
     }
-    //å…¨ä»¶ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒœã‚¿ãƒ³åˆ¶å¾¡
+    //‘SŒƒ_ƒEƒ“ƒ[ƒhƒ{ƒ^ƒ“§Œä
     document.getElementById("btnAllDownload").onclick = function () {
         AllDownload()
     }
-    dbConnect(); //ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹æ¥ç¶š
-    // æ‹…å½“è€…ã‚’ã‚»ãƒƒãƒˆã—ã¦ç”»é¢ã®åˆæœŸè¡¨ç¤º
+    dbConnect(); //ƒf[ƒ^ƒx[ƒXÚ‘±
+    // ’S“–Ò‚ğƒZƒbƒg‚µ‚Ä‰æ–Ê‚Ì‰Šú•\¦
     EmpCdisplay(EmpCd);
     Drawdata();
 }
 
 //*
-//*ã€€çµ‚äº†å‡¦ç†
+//*@I—¹ˆ—
 //*
 function OperateEnd() {
     dbClose();
@@ -61,7 +61,7 @@ function OperateEnd() {
 }
 
 //*
-//*ã€€å ±å‘Šæ—¥æ›´æ–°æ™‚ã®å‡¦ç†
+//*@•ñ“úXV‚Ìˆ—
 //*
 function txtDateUpdate(obj) {
     Drawdata();
@@ -69,27 +69,27 @@ function txtDateUpdate(obj) {
 }
 
 //*
-//*ã€€å ±å‘Šæ—¥ã«æ—¥å ±ç™»éŒ²ãŒå­˜åœ¨ã™ã‚‹ã‹ã‚’åˆ¤åˆ¥ã—ã¦è¡¨ç¤ºã™ã‚‹é–¢æ•°
+//*@•ñ“ú‚É“ú•ñ“o˜^‚ª‘¶İ‚·‚é‚©‚ğ”»•Ê‚µ‚Ä•\¦‚·‚éŠÖ”
 //*
 function Drawdata() {
     var EmpID = EmpCd;
     var arryCount = 9;
-    //å ±å‘Šæ—¥ãƒã‚§ãƒƒã‚¯
+    //•ñ“úƒ`ƒFƒbƒN
     var ReportdayF = document.getElementById('txtReportdayF').value;
     var ReportdayT = document.getElementById('txtReportdayT').value;
     var rtnc = txtDayCheacker();
     if (!rtnc){
         return;
     }
-    //ä»¶æ•°ãƒã‚§ãƒƒã‚¯
+    //Œ”ƒ`ƒFƒbƒN
     var countsql = " SELECT COUNT(WorkplanID) AS WIDCount" + " FROM t_workplan"
                  + " WHERE (PlanDate >='" + ReportdayF + "' AND PlanDate <= '" + ReportdayT + "') AND (Empid='" + EmpID + "') AND (DeleteFlg = '0' );";
     var ret = DisPlayChecker(countsql)
-    //æ—¥å ±ã®ç™»éŒ²ãŒãªã‘ã‚Œã°ç”»é¢ã‚’ã‚¯ãƒªã‚¢ã™ã‚‹
+    //“ú•ñ‚Ì“o˜^‚ª‚È‚¯‚ê‚Î‰æ–Ê‚ğƒNƒŠƒA‚·‚é
     if(ret == 0){
         TableClear();
     }
-   //æ—¥å ±ã®ç™»éŒ²ãŒã‚ã‚Œã°ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã™ã‚‹ã€‚    
+   //“ú•ñ‚Ì“o˜^‚ª‚ ‚ê‚Îƒf[ƒ^‚ğ•\¦‚·‚éB    
     if (ret != 0) {
         TableClear();
         dataDisplay();
@@ -97,16 +97,16 @@ function Drawdata() {
 }
 
 //*
-//*ã€€æ—¥å ±ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤ºã™ã‚‹é–¢æ•°(2ã¤ã®ãƒ‡ãƒ¼ã‚¿ã‚’åˆç®—ã—ã¦è¡¨ç¤ºã•ã›ã¦ã„ã‚‹ã®ã§åˆ‡å‡ºä¸å¯)
+//*@“ú•ñƒf[ƒ^‚ğ•\¦‚·‚éŠÖ”(2‚Â‚Ìƒf[ƒ^‚ğ‡Z‚µ‚Ä•\¦‚³‚¹‚Ä‚¢‚é‚Ì‚ÅØo•s‰Â)
 //*
 function dataDisplay() {
     try {
         var EmpId = EmpCd;
-        //ä½œæ¥­è¨ˆç”»ç™»éŒ²ãªã—
-        var cWork = "ï¼";
+        //ì‹ÆŒv‰æ“o˜^‚È‚µ
+        var cWork = "|";
         var ReportdayF = document.getElementById('txtReportdayF').value;
         var ReportdayT = document.getElementById('txtReportdayT').value;
-        //æ¤œç´¢æ¡ä»¶ãƒã‚§ãƒƒã‚¯
+        //ŒŸõğŒƒ`ƒFƒbƒN
         var rtnc = txtDayCheacker();
         if (!rtnc){
             return;
@@ -123,17 +123,18 @@ function dataDisplay() {
                     + " WHERE (((t_dailyreport.Reportday)>='" + ReportdayF + "' AND (t_dailyreport.Reportday) <= '" + ReportdayT + "') AND ((m_Emp.Empid)='" + EmpId + "')"
                     + " AND ((t_dailyreport.DeleteFlg)='0') AND ((m_Businessyear.ShowFlg)='0')) ORDER BY t_dailyreport.Reportday DESC,t_dailyreport.ReportID;";
         var recordSet = database.Execute(mySql);
-        //console.log(mySql);
+        //alert(mySql);
+        console.log(mySql);
         var counter = 1;
         while (!recordSet.EOF) {
             var table1 = document.getElementById("table1");
             var row1 = table1.insertRow(counter);
             var outhtml = new Array(19);
             var cellname = new Array(19);
-            //æ—¥å ±æ˜ç´°è¡¨ç¤º
+            //“ú•ñ–¾×•\¦
             for (var i = 0; i < 18; i++) {
                 var classname = String('D' + i);
-                //ãã®ã¾ã¾ãƒ¬ã‚³ãƒ¼ãƒ‰è¡¨ç¤º
+                //‚»‚Ì‚Ü‚ÜƒŒƒR[ƒh•\¦
                 if (i ==0 || i == 1){
                     cellname[i] = row1.insertCell(i);
                     cellname[i].setAttribute("class", classname);
@@ -141,7 +142,7 @@ function dataDisplay() {
                     outhtml[i] = '<span id="' + classname + '-' + counter + '">' + recordSet(i) + '</span>';
                     cellname[i].innerHTML = outhtml[i];
                 }
-                //ä½œæ¥­è¨ˆç”»è¡¨ç¤º
+                //ì‹ÆŒv‰æ•\¦
                 if (i == 2) {
                     var WPMemo = "";
                     if (recordSet(1) == cWork || recordSet(1) == null || recordSet(1) == undefined) {
@@ -151,7 +152,6 @@ function dataDisplay() {
                         WPMemo = cWork;
                         outhtml[i] = '<span id="' + classname + '-' + counter + '">' + WPMemo + '</span>';
                     } else {
-
                         mySubSql = " SELECT t_workplan.WorkplanID, t_workplan.Planmemo, t_workplan.Empid, t_workplan.PlanDate, t_dailyreport.Reportday "
                                   + " FROM t_dailyreport INNER JOIN t_workplan ON (t_dailyreport.MatterID = t_workplan.MatterID) AND (t_dailyreport.ActionplanID = t_workplan.ActionplanID)"
                                   + " AND (t_dailyreport.AdministrationID = t_workplan.AdministrationID) AND (t_dailyreport.WorkplanID = t_workplan.WorkplanID)"
@@ -169,7 +169,7 @@ function dataDisplay() {
                         SubrecordSet = null;
                     }
                 }
-                //1åˆ—ãšã‚Œã‚‹ã®ã§è¡¨ç¤ºç®‡æ‰€ã‚’èª¿æ•´
+                //1—ñ‚¸‚ê‚é‚Ì‚Å•\¦‰ÓŠ‚ğ’²®
                 if (i >= 2) {
                     var k = i + 1;
                     cellname[k] = row1.insertCell(k);
@@ -190,38 +190,38 @@ function dataDisplay() {
 }
 
 //*
-//*  å…¨ä»¶ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰(2ã¤ã®ãƒ‡ãƒ¼ã‚¿ã‚’åˆç®—ã—ã¦è¡¨ç¤ºã•ã›ã¦ã„ã‚‹ã®ã§åˆ‡å‡ºä¸å¯)
+//*  ‘SŒƒ_ƒEƒ“ƒ[ƒh(2‚Â‚Ìƒf[ƒ^‚ğ‡Z‚µ‚Ä•\¦‚³‚¹‚Ä‚¢‚é‚Ì‚ÅØo•s‰Â)
 //*
 function AllDownload() {
-    if (window.confirm('æ—¥å ±æ˜ç´°ã®å…¨ä»¶ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ã¾ã™ã€‚\nã‚ˆã‚ã—ã„ã§ã™ã‹ï¼Ÿ')) {
+    if (window.confirm('“ú•ñ–¾×‚Ì‘SŒƒf[ƒ^‚ğƒ_ƒEƒ“ƒ[ƒh‚µ‚Ü‚·B\n‚æ‚ë‚µ‚¢‚Å‚·‚©H')) {
         try {
-            //ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã«ä¿å­˜
+            //ƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ğƒfƒXƒNƒgƒbƒv‚É•Û‘¶
             var fs = new ActiveXObject("Scripting.FileSystemObject");
             var outf = fs.CreateTextFile("download_DailyAll.csv", true);
             var outputFile = "";
-            //ä½œæ¥­è¨ˆç”»ç™»éŒ²ãªã—
-            var cWork = "ï¼";
-            //ã‚¿ã‚¤ãƒˆãƒ«éƒ¨åˆ†
-            outputFile = outputFile + "\"" + "æ—¥å ±ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­è¨ˆç”»ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­è¨ˆç”»" + "\"" + ",";
-            outputFile = outputFile + "\"" + "åŸºæœ¬æ–¹é‡ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "åŸºæœ¬æ–¹é‡" + "\"" + ",";
-            outputFile = outputFile + "\"" + "è¡Œå‹•è¨ˆç”»ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "è¡Œå‹•è¨ˆç”»" + "\"" + ",";
-            outputFile = outputFile + "\"" + "æ¡ˆä»¶ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "æ¡ˆä»¶å" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­ID" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­å" + "\"" + ",";
-            outputFile = outputFile + "\"" + "å®Ÿç¸¾ãƒ»è£œè¶³" + "\"" + ",";
-            outputFile = outputFile + "\"" + "é–¢é€£è³‡æ–™" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­æ—¥" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­é–‹å§‹" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­çµ‚äº†" + "\"" + ",";
-            outputFile = outputFile + "\"" + "ä½œæ¥­æ™‚é–“" + "\"" + ",";
-            outputFile = outputFile + "\"" + "æ‹…å½“è€…CD" + "\"" + ",";
-            outputFile = outputFile + "\"" + "æ‹…å½“è€…å" + "\"" + "\n";
-            //æ¤œç´¢æ—¥ãƒã‚§ãƒƒã‚¯
+            //ì‹ÆŒv‰æ“o˜^‚È‚µ
+            var cWork = "|";
+            //ƒ^ƒCƒgƒ‹•”•ª
+            outputFile = outputFile + "\"" + "“ú•ñID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆŒv‰æID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆŒv‰æ" + "\"" + ",";
+            outputFile = outputFile + "\"" + "Šî–{•ûjID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "Šî–{•ûj" + "\"" + ",";
+            outputFile = outputFile + "\"" + "s“®Œv‰æID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "s“®Œv‰æ" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ˆÄŒID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ˆÄŒ–¼" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆID" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹Æ–¼" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ÀÑE•â‘«" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ŠÖ˜A‘—¿" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹Æ“ú" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆŠJn" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆI—¹" + "\"" + ",";
+            outputFile = outputFile + "\"" + "ì‹ÆŠÔ" + "\"" + ",";
+            outputFile = outputFile + "\"" + "’S“–ÒCD" + "\"" + ",";
+            outputFile = outputFile + "\"" + "’S“–Ò–¼" + "\"" + "\n";
+            //ŒŸõ“úƒ`ƒFƒbƒN
             var ReportdayF = document.getElementById('txtReportdayF').value;
             var ReportdayT = document.getElementById('txtReportdayT').value;
             var rtnc = txtDayCheacker();
@@ -246,13 +246,13 @@ function AllDownload() {
             //console.log(mySql);
             var counter = 1;
             while (!recordSet.EOF) {
-                //æ—¥å ±æ˜ç´°
+                //“ú•ñ–¾×
                 for (var i = 0; i < 18; i++) {
-                    //ãã®ã¾ã¾ãƒ¬ã‚³ãƒ¼ãƒ‰å‡ºåŠ›
+                    //‚»‚Ì‚Ü‚ÜƒŒƒR[ƒho—Í
                     if (i == 0 || i == 1) {
                         outputFile = outputFile + "\"" + recordSet(i) + "\"" + ",";
                     }
-                    //ä½œæ¥­è¨ˆç”»
+                    //ì‹ÆŒv‰æ
                     if (i == 2) {
                         var WPMemo = "";
                         if (recordSet(1) == cWork || recordSet(1) == null || recordSet(1) == undefined) {
@@ -273,7 +273,7 @@ function AllDownload() {
                         var k = i - 1;
                         outputFile = outputFile + "\"" + recordSet(k) + "\"" + ",";
                     }
-                    //æœ€çµ‚ã‚«ãƒ©ãƒ ã®å ´åˆã¯æ”¹è¡Œ
+                    //ÅIƒJƒ‰ƒ€‚Ìê‡‚Í‰üs
                     if (i == 17) {
                         outputFile = outputFile + "\"" + recordSet(i) + "\"" + "\n";
                     }
@@ -287,10 +287,10 @@ function AllDownload() {
         } finally {
             recordSet.Close();
             recordSet = null;
-            alert("ãƒ‡ã‚¹ã‚¯ãƒˆãƒƒãƒ—ã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã—ã¾ã—ãŸã€‚");
+            alert("ƒfƒXƒNƒgƒbƒv‚Éƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚µ‚Ü‚µ‚½B");
             outf.Close();
         }
     } else {
-        alert("ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã—ã¾ã—ãŸã€‚");
+        alert("ƒ_ƒEƒ“ƒ[ƒh‚ğƒLƒƒƒ“ƒZƒ‹‚µ‚Ü‚µ‚½B");
     }
 }

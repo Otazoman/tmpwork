@@ -2,12 +2,12 @@
 /*　TODO　*/
 
 3.冗長なコードのリファクタリング
-  3/9:OverTimeDownload.js、DailyReportDownload.js完了
-　3/9:調査→EmpCdisplayは統一できそう
+  3/9 :OverTimeDownload.js、DailyReportDownload.js完了
+　5/25:調査→EmpCdisplayの切出し完了
+
 　　　翌日日付セット関数は切出せそう
 　　　レコードの存在確認は切出せそう
 
-4.不具合
 
 5.ACCESS以外でのDBで動作するようにする。
 　→パラメータ設定を切替えればSQLiteでも動かせるように
