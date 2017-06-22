@@ -1,0 +1,70 @@
+補足資料   PCView.ini の説明
+
+[Option]セクション
+                            チェックあり           チェックなし
+------------------------------------------------------------------
+自動保存                    AutoSave=1             AutoSave=0
+自動終了                    AutoEnd=1              AutoEnd=0
+同名の保存をしない          Save=1                 Save=0
+自動メール送信              AutoMail=1             AutoMail=0
+環境ファイル変更不可        IniFile=1              IniFile=0
+メモリ(MB)・HDD(GB) 表示    Unit=1                 Unit=0
+メールに添付                Appending=1            Appending=0
+保存ファイル名に日時を追加  Datetime=1             Datetime=0
+保存時に通知                SaveMsg=1              SaveMsg=0
+
+             NoSave         チェックあり           チェックなし
+------------------------------------------------------------------
+IE設定環境                  IENoSave=1             IENoSave=0
+アプリケーション情報        AppNoSave=1            APpNoSave=0
+プリンタ情報                PrNoSave=1             PrNoSave=0
+共有資源                    ShNoSave=1             ShNoSave=0
+デバイス情報                DevNoSave=1            DevNoSave=0
+環境設定情報                EnvNoSave=1            EnvNoSave=0
+CPU詳細情報                 CPUNoSave=1            CPUNoSave=0
+スタートアップ情報          StartUpNoSave=1        StartUpNoSave=0
+WMI情報                     WMINoSave=1            WMINoSave=0
+
+             NoGet          チェックあり           チェックなし
+------------------------------------------------------------------
+IE設定環境                  IENoGet=1              IENoGet=0
+アプリケーション情報        AppNoGet=1             APpNoGet=0
+プリンタ情報                PrNoGet=1              PrNoGet=0
+共有資源                    ShNoGet=1              ShNoGet=0
+デバイス情報                DevNoGet=1             DevNoGet=0
+環境設定情報                EnvNoGet=1             EnvNoGet=0
+CPU詳細情報                 CPUNoGet=1             CPUNoGet=0
+スタートアップ情報          StartUpNoGet=1         StartUpNoGet=0
+WMI情報                     WMINoGet=1             WMINoGet=0
+
+
+保存ディレクトリ
+最後に指定したディレクトリ			SavePath
+（デフォルトは PCView.exe のディレクトリ）
+
+保存ファイル形式
+テキスト形式にチェックの場合		SaveStyle=0
+CSV形式にチェックの場合			SaveStyle=1
+
+[FileName]セクション
+
+保存ファイル名
+コンピュータ名にチェックの場合		FileIndex=0
+ユーザー名にチェックの場合		FileIndex=1
+IPアドレスにチェックの場合		FileIndex=2
+MACアドレスにチェックの場合		FileIndex=3
+ホスト名にチェックの場合		FileIndex=4
+
+[MailSetting]セクション
+
+最後に指定したメール送信先アドレス	MailTo
+（デフォルトは ブランク）
+最後に指定したメール送信元アドレス	MailFrom
+（デフォルトは ブランク）
+SMTPサーバーアドレス			SMTP
+(デフォルトは ブランク)
+SMTP ポート				Port
+(デフォルトは 25)
+
+[Free Space]セクション
+Free Spaceに入力した文字		Text=XXXXXXXXXX
